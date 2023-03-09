@@ -2,9 +2,10 @@
 {% block content %}
 
 <h3 class="red-text darken-6 center-align">Categories</h3>
+
 <div class="row">
     <div class="col s12 center-align">
-        <a href="{{ url_for('add_category') }}" class="btn-large red darken-2">
+      <a href="{{ url_for('add_category') }}" class="btn-large red darken-2">
             Add category <i class="fa fa-plus-square right"></i>
         </a>
     </div>
@@ -19,7 +20,7 @@
 
         </div>
         <div class="card-action">
-          <a href="#" class="btn green">Edit</a>
+          <a href="{{ url_for('edit_category', category_id=category.id) }}" class="btn green">Edit</a>
           <a href="#" class="btn blue darken-1">Delete</a>
         </div>
       </div>
