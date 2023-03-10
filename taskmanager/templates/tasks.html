@@ -3,4 +3,32 @@
 
 <h3 class="light-red-text darken-5 center-align">Tasks</h3>
 
+<div class="row">
+    <div class="col s12 center-align">
+      <a href="{{ url_for('add_task') }}" class="btn-large red darken-2">
+            Add Task <i class="fa fa-plus-square right"></i>
+        </a>
+    </div>
+</div>
+
+<div class="row">
+    <ul class="collapsible">
+        {% for task in tasks|sort(attribute="due_date") %}
+        <li>
+          <div class="collapsible-header white-text red darken-4">
+            <i class="fas fa-caret-down"></i>
+            <strong>{{ task.task_name }}</strong>: &ThinSpace; <strong>{{ task.due_date.strftime("%d %B, %Y") }}</strong>
+            {% if task.is_urgent == True %}
+                <i class="fas fa-circle-exclamation red-text text-lighten-2"></i>
+            {% endif %}
+          </div>
+          <div class="collapsible-body">
+            <strong>{{ task.category }}</strong>
+            <p>{{ task.task_description }}</p>
+          </div>
+        </li>
+        {% endfor %}
+      </ul>
+  </div>
+
 {% endblock %}
